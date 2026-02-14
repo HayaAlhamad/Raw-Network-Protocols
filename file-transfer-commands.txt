@@ -1,0 +1,18 @@
+# Commands for Raw Binary File Transfer with Netcat
+
+# --- On the SERVER machine (the one SENDING the file ) ---
+# This command listens on port 1234 and sends the content of /usr/bin/wget
+# to the first client that connects.
+nc -l -p 1234 < /usr/bin/wget
+
+
+# --- On the CLIENT machine (the one RECEIVING the file) ---
+# This command connects to the server and saves the received data into a new file named "wget_received".
+nc <server-ip> 1234 > wget_received
+
+# --- Verification on the CLIENT machine ---
+# 1. Make the received file executable
+chmod +x wget_received
+
+# 2. Run the command to verify it works
+./wget_received --version
