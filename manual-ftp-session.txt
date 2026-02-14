@@ -1,0 +1,22 @@
+# Partial Transcript of a Manual FTP Session using Netcat
+
+# This demonstrates connecting to an FTP server and manually typing commands
+# instead of using an FTP client. User input is prefixed with '>'.
+
+$ nc 192.168.174.131 21
+220 (vsFTPd 2.3.4)
+
+> USER service
+331 Please specify the password.
+
+> PASS service
+230 Login successful.
+
+> MKD test1
+257 "/home/service/test1" created
+
+> RMD test1
+250 Remove directory operation successful.
+
+> QUIT
+221 Goodbye.
